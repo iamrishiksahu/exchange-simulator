@@ -7,6 +7,16 @@ Consistent effort is being made to improve the latency and throughput of all hot
 - C++ 17 Standard
 - CMake 3.14+
 ```
+### Build and Run
+```bash
+# To Build
+mkdir build
+cd build
+cmake ..
+make
 
+# To Run
+./bin/exchange
+```
 ### Author
 Rishik Sahu ([LinkedIn](https://linkedin.com/in/rishiksahubit))
