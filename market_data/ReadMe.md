@@ -1,0 +1,1 @@
+This component is responsible for publishing market data.

@@ -1,0 +1,1 @@
+This component acts as a point of contact of the exchange for order actions.

@@ -1,0 +1,1 @@
+This component is the core exchagne that orchestrates the entire flow of order entry to matching to market data.
