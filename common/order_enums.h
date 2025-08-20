@@ -7,6 +7,17 @@ enum class Side
     Unknown
 };
 
+enum class OrderType
+{
+    FOK,
+    IOC,
+    Limit,
+    Market,
+    StopLimit,
+    StopMarket,
+    MarketToLimit
+};
+
 enum class ManulaOrderIndicator
 {
     Manual,
