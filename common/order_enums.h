@@ -1,3 +1,4 @@
+#pragma once
 namespace exch_ns
 {
 enum class Side
