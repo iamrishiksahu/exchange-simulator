@@ -13,12 +13,12 @@ class Order
 
   public:
     // Order() = default;
-    inline const std::optional<Price> GetLimitPrice() const noexcept
+    inline const std::optional<Price> &GetLimitPrice() const noexcept
     {
         return price_;
     }
 
-    inline const std::optional<Price> GetStopTriggerPrice() const noexcept
+    inline const std::optional<Price> &GetStopTriggerPrice() const noexcept
     {
         return stop_trigger_price_;
     }
