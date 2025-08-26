@@ -1,5 +1,6 @@
 #include <atomic>
 #include <type_traits>
+#include <utility>
 
 template <typename T, std::size_t size> class SPSC_Queue
 {
@@ -8,7 +9,7 @@ template <typename T, std::size_t size> class SPSC_Queue
   public:
     SPSC_Queue() = default;
 
-    bool Enqueue(const T &data) noexcept
+    template <typename U> bool Enqueue(U &&data) noexcept
     {
         const size_t next = Next(writer_.load(std::memory_order_relaxed));
 
@@ -18,7 +19,7 @@ template <typename T, std::size_t size> class SPSC_Queue
             return false;
         }
 
-        ring_buffer_[writer_.load(std::memory_order_relaxed)] = data;
+        ring_buffer_[writer_.load(std::memory_order_relaxed)] = std::forward<U>(data);
         writer_.store(next, std::memory_order_release);
         return true;
     }
@@ -33,7 +34,7 @@ template <typename T, std::size_t size> class SPSC_Queue
             return false;
         }
 
-        data = ring_buffer_[curr_reader];
+        data = std::move(ring_buffer_[curr_reader]);
         reader_.store(Next(curr_reader), std::memory_order_release);
         return true;
     }
